@@ -11,6 +11,13 @@
             obj.SumAllCharacter(111);
             obj.ReverseIntNumber(123);
             obj.CountSpecificDigit(123440, 4);
+            obj.ReverseAlphanumeric("Trilok");
+            obj.ReverseAlphanumeric2("Trilok");
+            obj.SumTargetNumber(987690, 15);
+            obj.SumAnyTargetNumber(987610, 15);
+            obj.DuplicateArray(1232678901);
+            obj.BiggestNumber(1232678901);
+            obj.NonRepeatingCharacter(1234123567);
         }
 
         // Print Number 1 to N in Asending
@@ -96,6 +103,176 @@
                 }
             }
             Console.WriteLine($"Total Sum is {y} and Reversed Number is {x}");
+        }
+
+        // Reverse Alphanumeric String
+
+        public string ReverseAlphanumeric(string n)
+        {
+            string x = "";
+
+            for (int i = n.Length - 1; i >= 0; i--)
+            {
+                x += n[i];
+            }
+            Console.WriteLine("Reverse String " + x);
+            return x;
+        }
+
+        public string ReverseAlphanumeric2(string n)
+        {
+            char[] arr = n.ToCharArray();
+
+            int left = 0;
+            int right = arr.Length - 1;
+
+            while (left < right)
+            {
+                char temp = arr[left];
+                arr[left] = arr[right];
+                arr[right] = temp;
+
+                left++;
+                right--;
+            }
+
+            string result = new string(arr);
+            Console.WriteLine("Reverse String " + result);
+            return result;
+        }
+
+        // Find the two numbers that sum to TARGET
+        public void SumTargetNumber(int x, int target)
+        {
+            char[] c = x.ToString().ToCharArray();
+
+            int left = 0;
+            int right = c.Length - 1;
+
+            while (left < right)
+            {
+                int leftVal = c[left] - '0';
+                int rightVal = c[right] - '0';
+
+                int sum = leftVal + rightVal;
+
+                if (sum == target)
+                {
+                    Console.WriteLine($"Pair found: {leftVal} + {rightVal} = {target}");
+                    return;
+                }
+                else if (sum < target)
+                {
+                    left++;
+                }
+                else
+                {
+                    right--;
+                }
+            }
+
+            Console.WriteLine("No pair found");
+        }
+
+        public void SumAnyTargetNumber(int x, int target)
+        {
+            char[] digits = x.ToString().ToCharArray();
+            HashSet<int> set = new HashSet<int>();
+
+            for (int i = 0; i < digits.Length; i++)
+            {
+                int num = digits[i] - '0';
+                int diff = target - num;
+
+                if (set.Contains(diff))
+                {
+                    Console.WriteLine($"Pair found: {diff} + {num} = {target}");
+                    return;
+                }
+
+                set.Add(num);
+            }
+
+            Console.WriteLine("No pair found");
+        }
+
+        // Find Duplicate in the Array
+        public void DuplicateArray(int x)
+        {
+            char[] c = x.ToString().ToCharArray();
+            HashSet<int> set = new HashSet<int>();
+            HashSet<int> DuplicateSet = new HashSet<int>();
+
+            for (int i = 0; i < c.Length; i++)
+            {
+                int num = c[i] - '0';
+
+
+                if (set.Contains(num))
+                {
+                    DuplicateSet.Add(num);
+                }
+                else
+                {
+                    set.Add(num);
+                }
+            }
+
+            Console.WriteLine("Non Repatating is: " + string.Join(", ", set));
+        }
+
+        // Find the Biggest Number
+        public void BiggestNumber(int n)
+        {
+            char[] c = n.ToString().ToCharArray();
+            int biggest = 0;
+
+            for (int i = 0; i < c.Length; i++)
+            {
+                int digit = c[i] - '0';
+
+                if (digit > biggest)
+                {
+                    biggest = digit;
+                }
+            }
+
+            Console.WriteLine($"Biggest Number {biggest}");
+        }
+
+        // Check Non Repeating Character
+
+        public void NonRepeatingCharacter(int n)
+        {
+            char[] c = n.ToString().ToCharArray();
+
+            HashSet<int> seen = new HashSet<int>();
+            HashSet<int> duplicates = new HashSet<int>();
+
+            foreach (char ch in c)
+            {
+                int digit = ch - '0';
+
+                if (!seen.Add(digit)) 
+                {
+                    duplicates.Add(digit);
+                }
+            }
+
+           
+            List<int> result = new List<int>();
+
+            foreach (char ch in c)
+            {
+                int digit = ch - '0';
+
+                if (!duplicates.Contains(digit))
+                {
+                    result.Add(digit);
+                }
+            }
+
+            Console.WriteLine("Non Repeating Characters: " + string.Join(", ", result));
         }
     }
 }
