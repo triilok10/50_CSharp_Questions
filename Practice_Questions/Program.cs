@@ -18,6 +18,11 @@
             obj.DuplicateArray(1232678901);
             obj.BiggestNumber(1232678901);
             obj.NonRepeatingCharacter(1234123567);
+            obj.SecondMaxCharacter(1234123798);
+            obj.SmallestNumber(1234123798);
+            obj.CountEvenOdd(222213579);
+            obj.CheckArmStrongNumber(153);
+            obj.SumOfEvenDigit(1532468);
         }
 
         // Print Number 1 to N in Asending
@@ -253,13 +258,13 @@
             {
                 int digit = ch - '0';
 
-                if (!seen.Add(digit)) 
+                if (!seen.Add(digit))
                 {
                     duplicates.Add(digit);
                 }
             }
 
-           
+
             List<int> result = new List<int>();
 
             foreach (char ch in c)
@@ -273,6 +278,121 @@
             }
 
             Console.WriteLine("Non Repeating Characters: " + string.Join(", ", result));
+        }
+
+        // Second Max Character
+        public void SecondMaxCharacter(int n)
+        {
+            char[] c = n.ToString().ToCharArray();
+            int firstBiggest = -1;
+            int secondBiggest = -1;
+
+            foreach (char ch in c)
+            {
+                int digit = ch - '0';
+                if (digit > firstBiggest)
+                    firstBiggest = digit;
+            }
+
+            foreach (char ch in c)
+            {
+                int digit = ch - '0';
+                if (digit > secondBiggest && digit < firstBiggest)
+                    secondBiggest = digit;
+            }
+
+            if (secondBiggest == -1)
+                Console.WriteLine("No second biggest digit exists.");
+            else
+                Console.WriteLine($"Second Biggest Digit: {secondBiggest}");
+        }
+
+        //  Smallest Digit
+        public void SmallestNumber(int n)
+        {
+            char[] c = n.ToString().ToCharArray();
+
+            int SmallestNumber = 9;
+
+            foreach (char ch in c)
+            {
+                int digit = ch - '0';
+
+                if (digit < SmallestNumber)
+                {
+                    SmallestNumber = ch - '0';
+                }
+            }
+            Console.WriteLine("Smallest  digit exists " + SmallestNumber);
+        }
+
+        // Count Even and Odd Digit
+        public void CountEvenOdd(int n)
+        {
+            char[] c = n.ToString().ToCharArray();
+
+            int EvenCount = 0;
+            int OddCount = 0;
+
+            foreach (char ch in c)
+            {
+                int digit = ch - '0';
+                if (digit % 2 == 0)
+                {
+                    EvenCount++;
+                }
+                else
+                {
+                    OddCount++;
+                }
+            }
+
+            Console.WriteLine($"Total Odd Count is {OddCount} and Even Count is {EvenCount}");
+        }
+
+        // Check Armstrong Number
+        public void CheckArmStrongNumber(int n)
+        {
+            char[] c = n.ToString().ToCharArray();
+            int Total = 0;
+
+            if (n > 0)
+            {
+                foreach (char ch in c)
+                {
+                    int digit = ch - '0';
+                    Total += (int)Math.Pow(digit, c.Length);
+                }
+            }
+
+            if (Total == n)
+            {
+                Console.WriteLine($"{n} is the Armstrong Number");
+            }
+            else
+            {
+                Console.WriteLine($"{n} is the Not Armstrong Number");
+            }
+        }
+
+        //Sum of Even Digits Only
+        public void SumOfEvenDigit(int n)
+        {
+            char[] c = n.ToString().ToCharArray();
+
+            int EvenSum = 0;
+
+            foreach (var item in c)
+            {
+                int digit = item - '0';
+
+                if(digit % 2 == 0)
+                {
+                    EvenSum += digit;
+                }
+            }
+
+            Console.WriteLine($"{EvenSum} is the Total Sum of EvenNumber");
         }
     }
 }
