@@ -23,6 +23,7 @@
             obj.CountEvenOdd(222213579);
             obj.CheckArmStrongNumber(153);
             obj.SumOfEvenDigit(1532468);
+            obj.PalindromeNumber(121);
         }
 
         // Print Number 1 to N in Asending
@@ -386,13 +387,46 @@
             {
                 int digit = item - '0';
 
-                if(digit % 2 == 0)
+                if (digit % 2 == 0)
                 {
                     EvenSum += digit;
                 }
             }
 
             Console.WriteLine($"{EvenSum} is the Total Sum of EvenNumber");
+        }
+
+        //Palindrome Number 
+
+        public void PalindromeNumber(int n)
+        {
+            char[] c = n.ToString().ToCharArray();
+            List<int> set = new List<int>();
+
+            int right = c.Length-1;
+
+            while (right >= 0)
+            {
+                int dight = c[right]-'0';
+                set.Add(dight);
+                right--;
+            }
+
+            int reversed = 0;
+
+            foreach (int digit in set)
+            {
+                reversed = reversed * 10 + digit;
+            }
+
+            if (n == reversed)
+            {
+                Console.WriteLine($"{n} is Palindrome");
+            }
+            else
+            {
+                Console.WriteLine($"{n} is NOT Palindrome");
+            }
         }
     }
 }
