@@ -24,6 +24,7 @@
             obj.CheckArmStrongNumber(153);
             obj.SumOfEvenDigit(1532468);
             obj.PalindromeNumber(121);
+            obj.CountTotalZero(120001);
         }
 
         // Print Number 1 to N in Asending
@@ -403,11 +404,11 @@
             char[] c = n.ToString().ToCharArray();
             List<int> set = new List<int>();
 
-            int right = c.Length-1;
+            int right = c.Length - 1;
 
             while (right >= 0)
             {
-                int dight = c[right]-'0';
+                int dight = c[right] - '0';
                 set.Add(dight);
                 right--;
             }
@@ -427,6 +428,33 @@
             {
                 Console.WriteLine($"{n} is NOT Palindrome");
             }
+        }
+
+        // Count Total Number of Zeros
+        public void CountTotalZero(int n)
+        {
+            n = Math.Abs(n); // handle negatives
+            int TotalZero = 0;
+            int a = 9;
+
+            if (n == 0)
+            {
+                Console.WriteLine("Total Number of Zeros is 1");
+                return;
+            }
+
+            while (n > 0)
+            {
+                
+                a = n%10;
+                n = n / 10;
+                if (a == 0)
+                {
+                    TotalZero++;
+                }
+            }
+
+            Console.WriteLine($"Total Number of Zero is {TotalZero}");
         }
     }
 }
