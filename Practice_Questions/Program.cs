@@ -25,6 +25,7 @@
             obj.SumOfEvenDigit(1532468);
             obj.PalindromeNumber(121);
             obj.CountTotalZero(120001);
+            obj.ProductOfAllDigit(122421);
         }
 
         // Print Number 1 to N in Asending
@@ -455,6 +456,38 @@
             }
 
             Console.WriteLine($"Total Number of Zero is {TotalZero}");
+        }
+
+        // Product of All Digits — Multiply all digits of a number together.
+
+        public void ProductOfAllDigit(int n)
+        {
+            n = Math.Abs(n); 
+            int TotalProduct = 1;
+            int LastDigit = 1;
+            if(n == 0)
+            {
+                Console.WriteLine("Total Number of All Product is 0");
+                return;
+            }
+
+            while (n>0)
+            {
+                LastDigit = n % 10;
+                n = (n / 10);
+                if (LastDigit == 0)
+                {
+                    Console.WriteLine("Total Number of All Product is 0");
+                    return;
+                }
+                else
+                {
+                    TotalProduct *= LastDigit;
+                }
+
+
+            }
+            Console.WriteLine($"Total Number of All Product is {TotalProduct}");
         }
     }
 }
