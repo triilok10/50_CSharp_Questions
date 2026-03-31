@@ -1,4 +1,6 @@
-﻿using System.Reflection.Metadata;
+﻿using System.IO.Pipelines;
+using System.Reflection.Metadata;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace test
 {
@@ -31,6 +33,7 @@ namespace test
             obj.CountVowelsAndConsonants("AEIOUSJDBFJSacdc");
             obj.RemovingSpacesFromString("AE I OU    SJ DBF JSacdc");
             obj.FizzBuzz();
+            obj.PrimeNumber(7);
         }
 
         // Print Number 1 to N in Asending
@@ -575,15 +578,53 @@ namespace test
                 {
                     Console.WriteLine("Buzz");
                 }
-                else if (i % 7 == 0)
-                {
-                    Console.WriteLine("Whiz");
-                }
                 else
                 {
                     Console.WriteLine(i);
                 }
 
+
+                if (i % 7 == 0)
+                {
+                    Console.WriteLine("Whiz");
+                }
+
+
+            }
+        }
+
+        //Prime Number Check — Check if a number is prime, then print all primes up to N
+        public bool IsPrime(int n)
+        {
+            if (n <= 1) return false;
+            if (n == 2) return true;
+
+            for (int i = 2; i < n; i++)
+            {
+                if (n % i == 0) return false;
+            }
+
+            return true;
+        }
+
+        public void PrimeNumber(int n)
+        {
+            if (n <= 0)
+            {
+                Console.WriteLine("Number must be greater than 0");
+                return;
+            }
+
+            if (IsPrime(n))
+                Console.WriteLine($"{n} is a Prime Number");
+            else
+                Console.WriteLine($"{n} is NOT a Prime Number");
+            Console.WriteLine($"{n} is NOT a Prime Number");
+            Console.Write($"All primes up to {n}: ");
+            for (int i = 2; i <= n; i++)
+            {
+                if (IsPrime(i))
+                    Console.Write(i + " ");
             }
         }
 
