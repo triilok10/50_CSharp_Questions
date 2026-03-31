@@ -34,6 +34,7 @@ namespace test
             obj.RemovingSpacesFromString("AE I OU    SJ DBF JSacdc");
             obj.FizzBuzz();
             obj.PrimeNumber(7);
+            obj.Fibonacci(100);
         }
 
         // Print Number 1 to N in Asending
@@ -628,5 +629,34 @@ namespace test
             }
         }
 
+
+        // Print Fibonacci Series
+        public void Fibonacci(int n)
+        {
+            List<int> set = new List<int>();
+            int a = 0;
+            int b = 0;
+            if (n <= 0)
+            {
+                Console.WriteLine("Number must be greater then 0");
+                return;
+            }
+
+            for (int i = 0; i < n; i++)
+            {
+
+                if (i > 1)
+                {
+                    a = set[i - 1];
+                    b = set[i - 2];
+                    set.Add(a + b);
+                }
+                else
+                {
+                    set.Add(i);
+                }
+            }
+            Console.WriteLine($"Fibonacci Series: {string.Join(", ", set)}");
+        }
     }
 }
