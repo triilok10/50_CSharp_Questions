@@ -29,6 +29,7 @@ namespace test
             obj.CountTotalZero(120001);
             obj.ProductOfAllDigit(122421);
             obj.CountVowelsAndConsonants("AEIOUSJDBFJSacdc");
+            obj.RemovingSpacesFromString("AE I OU    SJ DBF JSacdc");
         }
 
         // Print Number 1 to N in Asending
@@ -522,5 +523,30 @@ namespace test
             Console.WriteLine($"Vowels ({consonantList.Count()}): {string.Join(", ", vowelList)}");
             Console.WriteLine($"Consonants ({consonantList.Count()}): {string.Join(", ", consonantList)}");
         }
+
+
+        public void RemovingSpacesFromString(string input)
+        {
+            List<char> result = new List<char>();
+            int whiteSpaces = 0;
+
+            foreach (char ch in input)
+            {
+                if (ch == ' ')
+                {
+                    whiteSpaces++;
+                }
+                else
+                {
+                    result.Add(ch);
+                }
+            }
+
+            Console.WriteLine($"Result: {new string(result.ToArray())}");
+            Console.WriteLine($"Length After Removing Spaces: {result.Count}");
+            Console.WriteLine($"Total Spaces: {whiteSpaces}");
+        }
+
+
     }
 }
