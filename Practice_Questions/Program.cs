@@ -30,6 +30,7 @@ namespace test
             obj.ProductOfAllDigit(122421);
             obj.CountVowelsAndConsonants("AEIOUSJDBFJSacdc");
             obj.RemovingSpacesFromString("AE I OU    SJ DBF JSacdc");
+            obj.FizzBuzz();
         }
 
         // Print Number 1 to N in Asending
@@ -514,7 +515,7 @@ namespace test
                     }
                     else
                     {
-                      
+
                         consonantList.Add(ch);
                     }
                 }
@@ -547,6 +548,44 @@ namespace test
             Console.WriteLine($"Total Spaces: {whiteSpaces}");
         }
 
+
+
+        // FizzBuzz Variant — Print numbers 1–100, but multiples of 3 print "Fizz", multiples of 5 print "Buzz", multiples of both print "FizzBuzz", multiples of 7 print "Whiz"
+
+        public void FizzBuzz()
+        {
+            int n = 100;
+            if (n <= 0)
+            {
+                Console.WriteLine("Number must be greater then 0");
+                return;
+            }
+
+            for (int i = 1; i <= n; i++)
+            {
+                if ((i % 3 == 0) && (i % 5 == 0))
+                {
+                    Console.WriteLine("FizzBuzz");
+                }
+                else if (i % 3 == 0)
+                {
+                    Console.WriteLine("Fizz");
+                }
+                else if (i % 5 == 0)
+                {
+                    Console.WriteLine("Buzz");
+                }
+                else if (i % 7 == 0)
+                {
+                    Console.WriteLine("Whiz");
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
+
+            }
+        }
 
     }
 }
