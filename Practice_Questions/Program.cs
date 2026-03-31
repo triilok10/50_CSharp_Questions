@@ -1,4 +1,6 @@
-﻿namespace test
+﻿using System.Reflection.Metadata;
+
+namespace test
 {
     public class Program
     {
@@ -26,6 +28,7 @@
             obj.PalindromeNumber(121);
             obj.CountTotalZero(120001);
             obj.ProductOfAllDigit(122421);
+            obj.CountVowelsAndConsonants("AEIOUSJDBFJSacdc");
         }
 
         // Print Number 1 to N in Asending
@@ -446,8 +449,8 @@
 
             while (n > 0)
             {
-                
-                a = n%10;
+
+                a = n % 10;
                 n = n / 10;
                 if (a == 0)
                 {
@@ -462,16 +465,16 @@
 
         public void ProductOfAllDigit(int n)
         {
-            n = Math.Abs(n); 
+            n = Math.Abs(n);
             int TotalProduct = 1;
             int LastDigit = 1;
-            if(n == 0)
+            if (n == 0)
             {
                 Console.WriteLine("Total Number of All Product is 0");
                 return;
             }
 
-            while (n>0)
+            while (n > 0)
             {
                 LastDigit = n % 10;
                 n = (n / 10);
@@ -488,6 +491,36 @@
 
             }
             Console.WriteLine($"Total Number of All Product is {TotalProduct}");
+        }
+
+
+        // Count vowels & consonants
+        public void CountVowelsAndConsonants(string input)
+        {
+
+            List<char> vowelList = new List<char>();
+            List<char> consonantList = new List<char>();
+
+            string vowels = "aeiouAEIOU";
+
+            foreach (char ch in input)
+            {
+                if (char.IsLetter(ch))
+                {
+                    if (vowels.Contains(ch))
+                    {
+                        vowelList.Add(ch);
+                    }
+                    else
+                    {
+                      
+                        consonantList.Add(ch);
+                    }
+                }
+            }
+
+            Console.WriteLine($"Vowels ({consonantList.Count()}): {string.Join(", ", vowelList)}");
+            Console.WriteLine($"Consonants ({consonantList.Count()}): {string.Join(", ", consonantList)}");
         }
     }
 }
