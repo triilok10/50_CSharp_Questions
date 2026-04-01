@@ -36,6 +36,7 @@ namespace test
             obj.PrimeNumber(7);
             obj.Fibonacci(100);
             obj.divisorssum(28);
+            obj.GCD(100, 10);
         }
 
         // Print Number 1 to N in Asending
@@ -684,5 +685,34 @@ namespace test
             }
         }
 
+
+        // GCD  — Find Greatest Common Divisor of two numbers
+        public void GCD(int x, int y)
+        {
+            if (x <= 0 || y <= 0)
+            {
+                Console.WriteLine("Numbers must be greater than 0");
+                return;
+            }
+
+            int min;
+
+            if (x < y)
+                min = x;
+            else
+                min = y;
+
+            int gcd = 1;
+
+            for (int i = 1; i <= min; i++)
+            {
+                if (x % i == 0 && y % i == 0)
+                {
+                    gcd = i;
+                }
+            }
+
+            Console.WriteLine($"GCD is: {gcd}");
+        }
     }
 }
