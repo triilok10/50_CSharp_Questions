@@ -35,6 +35,7 @@ namespace test
             obj.FizzBuzz();
             obj.PrimeNumber(7);
             obj.Fibonacci(100);
+            obj.divisorssum(28);
         }
 
         // Print Number 1 to N in Asending
@@ -658,5 +659,30 @@ namespace test
             }
             Console.WriteLine($"Fibonacci Series: {string.Join(", ", set)}");
         }
+
+        //Perfect Number — A number whose divisors sum equals itself (e.g., 28 = 1+2+4+7+14)
+
+        public void divisorssum(int n)
+        {
+            int sum = 0;
+
+            for (int i = 1; i < n; i++)
+            {
+                if (n % i == 0)
+                {
+                    sum += i;
+                }
+            }
+
+            if (sum == n)
+            {
+                Console.WriteLine($"Yes, Perfect Divisor, {n} ");
+            }
+            else
+            {
+                Console.WriteLine($"Not a Perfect Divisor, {n} ");
+            }
+        }
+
     }
 }
