@@ -37,6 +37,7 @@ namespace test
             obj.Fibonacci(100);
             obj.divisorssum(28);
             obj.GCD(6, 8);
+            obj.PowerWithoutMath(2, 3);
         }
 
         // Print Number 1 to N in Asending
@@ -715,10 +716,22 @@ namespace test
             // Lowest Common Factor;
             int LCM = 0;
             LCM = (x * y) / gcd;
-            
+
 
             Console.WriteLine($"GCD is: {gcd}");
             Console.WriteLine($"LCM is: {LCM}");
+        }
+
+        //Power Without Math.Pow — Implement your own power function using loops
+        public void PowerWithoutMath(int n, int p)
+        {
+            int Pow = 1;
+            for (int i = 1; i <= p; i++)
+            {
+                Pow *= n;
+            }
+
+            Console.WriteLine($"Power is {Pow}");
         }
     }
 }
