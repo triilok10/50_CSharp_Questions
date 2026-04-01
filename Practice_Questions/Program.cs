@@ -36,7 +36,7 @@ namespace test
             obj.PrimeNumber(7);
             obj.Fibonacci(100);
             obj.divisorssum(28);
-            obj.GCD(100, 10);
+            obj.GCD(6, 8);
         }
 
         // Print Number 1 to N in Asending
@@ -712,7 +712,13 @@ namespace test
                 }
             }
 
+            // Lowest Common Factor;
+            int LCM = 0;
+            LCM = (x * y) / gcd;
+            
+
             Console.WriteLine($"GCD is: {gcd}");
+            Console.WriteLine($"LCM is: {LCM}");
         }
     }
 }
