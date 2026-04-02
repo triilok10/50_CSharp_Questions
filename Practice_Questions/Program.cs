@@ -40,6 +40,7 @@ namespace test
             obj.PowerWithoutMath(2, 3);
             obj.DigitalRoot(493);
             obj.HappyNumber(21);
+            obj.NeonNumber(9);
         }
 
         // Print Number 1 to N in Asending
@@ -779,6 +780,32 @@ namespace test
             }
 
             return true;
+        }
+
+        //Neon Number — Square the number, sum its digits, check if equal to original (e.g., 9 → 81 → 9)
+
+        public bool NeonNumber(int n)
+        {
+            int Sq = 0;
+            int temp = 0;
+
+            if (n < 0) return false;
+
+
+            Sq = n * n;
+            while (Sq > 0)
+            {
+                int a = Sq % 10;
+                Sq /= 10;
+                temp += a;
+            }
+
+            if (temp == n)
+            {
+                return true;
+            }
+            return false;
+
         }
     }
 }
