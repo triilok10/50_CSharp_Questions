@@ -39,6 +39,7 @@ namespace test
             obj.GCD(6, 8);
             obj.PowerWithoutMath(2, 3);
             obj.DigitalRoot(493);
+            obj.HappyNumber(21);
         }
 
         // Print Number 1 to N in Asending
@@ -745,13 +746,39 @@ namespace test
                 int sum = 0;
                 while (n > 0)
                 {
-                    sum += n % 10; 
-                    n /= 10;       
+                    sum += n % 10;
+                    n /= 10;
                 }
                 n = sum;
             }
 
             return n;
+        }
+
+        //Happy Number — Sum of squares of digits, repeat until you get 1 (happy) or loop forever (unhappy)
+        public bool HappyNumber(int n)
+        {
+            n = Math.Abs(n);
+            HashSet<int> seen = new HashSet<int>();
+
+            while (n != 1)
+            {
+                int sum = 0;
+                while (n > 0)
+                {
+                    int digit = n % 10;
+                    sum += digit * digit;
+                    n /= 10;
+                }
+                n = sum;
+
+                if (seen.Contains(n))
+                    return false;
+
+                seen.Add(n);
+            }
+
+            return true;
         }
     }
 }
