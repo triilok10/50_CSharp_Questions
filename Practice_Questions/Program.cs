@@ -38,6 +38,7 @@ namespace test
             obj.divisorssum(28);
             obj.GCD(6, 8);
             obj.PowerWithoutMath(2, 3);
+            obj.DigitalRoot(493);
         }
 
         // Print Number 1 to N in Asending
@@ -732,6 +733,25 @@ namespace test
             }
 
             Console.WriteLine($"Power is {Pow}");
+        }
+
+        // Digital Root — Keep summing digits until you get a single digit(e.g., 493 → 16 → 7)
+        public int DigitalRoot(int n)
+        {
+            n = Math.Abs(n);
+
+            while (n >= 10)
+            {
+                int sum = 0;
+                while (n > 0)
+                {
+                    sum += n % 10; 
+                    n /= 10;       
+                }
+                n = sum;
+            }
+
+            return n;
         }
     }
 }
